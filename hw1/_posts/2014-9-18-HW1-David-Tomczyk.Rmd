@@ -76,16 +76,17 @@ progtwit$Program[progtwit$Program == "QMSS Third semester"] <- "QMSS 3rd Sem."
 ```{r ggplot2, fig.width=18, fig.height=12, message=FALSE}
 
 twit.title <- ggtitle("Twitter Users by Program")
+title.size <- theme(plot.title = element_text(size = 30))
 twit.legend <- theme(legend.text = element_text(size = 20)) + theme(legend.title = element_text(size = 25))
 legend.order <- guides(fill = guide_legend(reverse=TRUE))
 colors.custom <- scale_fill_manual(values=c("#999999", "#1dcaff"))
 
 #Stacked bar chart
-ggplot(progtwit, aes(Program, fill=Twitter))+ geom_bar()+ legend.order + colors.custom + twit.title + x.axis + y.axis + twit.legend
+ggplot(progtwit, aes(Program, fill=Twitter))+ geom_bar()+ legend.order + colors.custom + twit.title + title.size + x.axis + y.axis + twit.legend #now title works?
 
 #Dot plot
 dotplot <- geom_dotplot(stackgroups=TRUE, binpositions="all")
-ggplot(progtwit, aes(Program, fill=Twitter))+ dotplot + legend.order + colors.custom + twit.title + x.axis + y.axis+twit.legend
+ggplot(progtwit, aes(Program, fill=Twitter))+ dotplot + legend.order + colors.custom + twit.title + x.axis + y.axis+twit.legend+title.size
 
 ```
 ---
